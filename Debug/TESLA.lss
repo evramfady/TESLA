@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000188  00000000  00000000  00000898  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001bec  00000000  00000000  00000a20  2**0
+  6 .debug_info   00001bbd  00000000  00000000  00000a20  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000cbf  00000000  00000000  0000260c  2**0
+  7 .debug_abbrev 00000cae  00000000  00000000  000025dd  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000e0e  00000000  00000000  000032cb  2**0
+  8 .debug_line   00000de5  00000000  00000000  0000328b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000002cc  00000000  00000000  000040dc  2**2
+  9 .debug_frame  000002cc  00000000  00000000  00004070  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000006cd  00000000  00000000  000043a8  2**0
+ 10 .debug_str    000006c6  00000000  00000000  0000433c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000a96  00000000  00000000  00004a75  2**0
+ 11 .debug_loc    00000a96  00000000  00000000  00004a02  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000118  00000000  00000000  0000550b  2**0
+ 12 .debug_ranges 00000118  00000000  00000000  00005498  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -714,10 +714,10 @@ ISR(INT1_vect)
  418:	40 e0       	ldi	r20, 0x00	; 0
  41a:	50 e0       	ldi	r21, 0x00	; 0
  41c:	0e 94 69 03 	call	0x6d2	; 0x6d2 <__udivmodsi4>
- 420:	20 93 80 00 	sts	0x0080, r18	; 0x800080 <distance>
- 424:	30 93 81 00 	sts	0x0081, r19	; 0x800081 <distance+0x1>
- 428:	40 93 82 00 	sts	0x0082, r20	; 0x800082 <distance+0x2>
- 42c:	50 93 83 00 	sts	0x0083, r21	; 0x800083 <distance+0x3>
+ 420:	20 93 78 00 	sts	0x0078, r18	; 0x800078 <distance>
+ 424:	30 93 79 00 	sts	0x0079, r19	; 0x800079 <distance+0x1>
+ 428:	40 93 7a 00 	sts	0x007A, r20	; 0x80007a <distance+0x2>
+ 42c:	50 93 7b 00 	sts	0x007B, r21	; 0x80007b <distance+0x3>
     lcd_goto_xy(1,0);
  430:	60 e0       	ldi	r22, 0x00	; 0
  432:	70 e0       	ldi	r23, 0x00	; 0
@@ -731,14 +731,14 @@ ISR(INT1_vect)
 	extern char *__itoa_ncheck (int, char *, unsigned char);
 	return __itoa_ncheck (__val, __s, __radix);
  43c:	4a e0       	ldi	r20, 0x0A	; 10
- 43e:	64 e8       	ldi	r22, 0x84	; 132
+ 43e:	60 e8       	ldi	r22, 0x80	; 128
  440:	70 e0       	ldi	r23, 0x00	; 0
- 442:	80 91 80 00 	lds	r24, 0x0080	; 0x800080 <distance>
- 446:	90 91 81 00 	lds	r25, 0x0081	; 0x800081 <distance+0x1>
+ 442:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <distance>
+ 446:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <distance+0x1>
  44a:	0e 94 8b 03 	call	0x716	; 0x716 <__itoa_ncheck>
   	itoa(distance,distance_str,10);
   	strcat(distance_str, " cm ");
- 44e:	a4 e8       	ldi	r26, 0x84	; 132
+ 44e:	a0 e8       	ldi	r26, 0x80	; 128
  450:	b0 e0       	ldi	r27, 0x00	; 0
  452:	0d 90       	ld	r0, X+
  454:	00 20       	and	r0, r0
@@ -752,7 +752,7 @@ ISR(INT1_vect)
  464:	8a 95       	dec	r24
  466:	e1 f7       	brne	.-8      	; 0x460 <__EEPROM_REGION_LENGTH__+0x60>
   	lcd_write_word(distance_str);
- 468:	84 e8       	ldi	r24, 0x84	; 132
+ 468:	80 e8       	ldi	r24, 0x80	; 128
  46a:	90 e0       	ldi	r25, 0x00	; 0
  46c:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <lcd_write_word>
 	#else
@@ -783,10 +783,10 @@ ISR(INT1_vect)
 	
 	
 	if (distance <= 10)
- 49a:	80 91 80 00 	lds	r24, 0x0080	; 0x800080 <distance>
- 49e:	90 91 81 00 	lds	r25, 0x0081	; 0x800081 <distance+0x1>
- 4a2:	a0 91 82 00 	lds	r26, 0x0082	; 0x800082 <distance+0x2>
- 4a6:	b0 91 83 00 	lds	r27, 0x0083	; 0x800083 <distance+0x3>
+ 49a:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <distance>
+ 49e:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <distance+0x1>
+ 4a2:	a0 91 7a 00 	lds	r26, 0x007A	; 0x80007a <distance+0x2>
+ 4a6:	b0 91 7b 00 	lds	r27, 0x007B	; 0x80007b <distance+0x3>
  4aa:	0b 97       	sbiw	r24, 0x0b	; 11
  4ac:	a1 05       	cpc	r26, r1
  4ae:	b1 05       	cpc	r27, r1
@@ -814,10 +814,10 @@ ISR(INT1_vect)
  4d0:	00 00       	nop
 	_delay_ms(500);
 	left_dis = distance;
- 4d2:	80 91 80 00 	lds	r24, 0x0080	; 0x800080 <distance>
- 4d6:	90 91 81 00 	lds	r25, 0x0081	; 0x800081 <distance+0x1>
- 4da:	a0 91 82 00 	lds	r26, 0x0082	; 0x800082 <distance+0x2>
- 4de:	b0 91 83 00 	lds	r27, 0x0083	; 0x800083 <distance+0x3>
+ 4d2:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <distance>
+ 4d6:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <distance+0x1>
+ 4da:	a0 91 7a 00 	lds	r26, 0x007A	; 0x80007a <distance+0x2>
+ 4de:	b0 91 7b 00 	lds	r27, 0x007B	; 0x80007b <distance+0x3>
  4e2:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <left_dis>
  4e6:	90 93 7d 00 	sts	0x007D, r25	; 0x80007d <left_dis+0x1>
  4ea:	a0 93 7e 00 	sts	0x007E, r26	; 0x80007e <left_dis+0x2>
@@ -846,14 +846,14 @@ ISR(INT1_vect)
  518:	00 00       	nop
 	_delay_ms(500);
 	right_dis = distance;
- 51a:	80 91 80 00 	lds	r24, 0x0080	; 0x800080 <distance>
- 51e:	90 91 81 00 	lds	r25, 0x0081	; 0x800081 <distance+0x1>
- 522:	a0 91 82 00 	lds	r26, 0x0082	; 0x800082 <distance+0x2>
- 526:	b0 91 83 00 	lds	r27, 0x0083	; 0x800083 <distance+0x3>
- 52a:	80 93 78 00 	sts	0x0078, r24	; 0x800078 <right_dis>
- 52e:	90 93 79 00 	sts	0x0079, r25	; 0x800079 <right_dis+0x1>
- 532:	a0 93 7a 00 	sts	0x007A, r26	; 0x80007a <right_dis+0x2>
- 536:	b0 93 7b 00 	sts	0x007B, r27	; 0x80007b <right_dis+0x3>
+ 51a:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <distance>
+ 51e:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <distance+0x1>
+ 522:	a0 91 7a 00 	lds	r26, 0x007A	; 0x80007a <distance+0x2>
+ 526:	b0 91 7b 00 	lds	r27, 0x007B	; 0x80007b <distance+0x3>
+ 52a:	80 93 8a 00 	sts	0x008A, r24	; 0x80008a <right_dis>
+ 52e:	90 93 8b 00 	sts	0x008B, r25	; 0x80008b <right_dis+0x1>
+ 532:	a0 93 8c 00 	sts	0x008C, r26	; 0x80008c <right_dis+0x2>
+ 536:	b0 93 8d 00 	sts	0x008D, r27	; 0x80008d <right_dis+0x3>
  53a:	2f ef       	ldi	r18, 0xFF	; 255
  53c:	89 e6       	ldi	r24, 0x69	; 105
  53e:	98 e1       	ldi	r25, 0x18	; 24
@@ -869,10 +869,10 @@ ISR(INT1_vect)
  54c:	0e 94 8e 01 	call	0x31c	; 0x31c <servo_rotate90>
 	
 	if (right_dis < left_dis )
- 550:	40 91 78 00 	lds	r20, 0x0078	; 0x800078 <right_dis>
- 554:	50 91 79 00 	lds	r21, 0x0079	; 0x800079 <right_dis+0x1>
- 558:	60 91 7a 00 	lds	r22, 0x007A	; 0x80007a <right_dis+0x2>
- 55c:	70 91 7b 00 	lds	r23, 0x007B	; 0x80007b <right_dis+0x3>
+ 550:	40 91 8a 00 	lds	r20, 0x008A	; 0x80008a <right_dis>
+ 554:	50 91 8b 00 	lds	r21, 0x008B	; 0x80008b <right_dis+0x1>
+ 558:	60 91 8c 00 	lds	r22, 0x008C	; 0x80008c <right_dis+0x2>
+ 55c:	70 91 8d 00 	lds	r23, 0x008D	; 0x80008d <right_dis+0x3>
  560:	80 91 7c 00 	lds	r24, 0x007C	; 0x80007c <left_dis>
  564:	90 91 7d 00 	lds	r25, 0x007D	; 0x80007d <left_dis+0x1>
  568:	a0 91 7e 00 	lds	r26, 0x007E	; 0x80007e <left_dis+0x2>
@@ -987,9 +987,9 @@ ISR(TIMER0_OVF_vect)
  628:	18 95       	reti
 
 0000062a <main>:
-uint32 left_dis =0;
-uint32 right_dis =0;
-extern uint32 distance;
+#include "Servo.h"
+#include "Motor_Driver.h"
+
 int main(void)
 {
 	Servo_Init();

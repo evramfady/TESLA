@@ -9,9 +9,7 @@
 #include "ultrasonic.h"
 #include "Servo.h"
 #include "Motor_Driver.h"
-uint32 left_dis =0;
-uint32 right_dis =0;
-extern uint32 distance;
+
 int main(void)
 {
 	Servo_Init();
